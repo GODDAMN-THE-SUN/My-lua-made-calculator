@@ -2,7 +2,7 @@
 hey uhh i made this calculator a bit better, you will kinda need luajit for this.
 to run the calculator, first clone the repository:
 ```
-git clone https://GODDAMN-THE-SUN/My-lua-made-calculator.git
+git clone https://github.com/GODDAMN-THE-SUN/My-lua-made-calculator.git
 ```
 then you enter the directory:
 ```

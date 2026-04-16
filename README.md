@@ -13,7 +13,7 @@ after that, you execute one of the run files:
 # on windows:
 .\run.ps1
 # on linux:
-.\run.sh
+bash run.sh
 ```
 then boom! you're calculating i guess.
 

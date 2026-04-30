@@ -1,20 +1,28 @@
 local Operations = require("Operations")
 local FFI = require("ffi")
-FFI.cdef [[void Sleep(unsigned long ms)]] -- we use luajit foreign function interface because i am not bothering with os.execute()
 
-FFI.C.Sleep(1000)
+local sleep;
+if FFI.os == "Windows" then
+    FFI.cdef [[void Sleep(unsigned int ms);]]
+    sleep = function(ms) FFI.C.Sleep(ms) end
+else
+    FFI.cdef [[int usleep(unsigned int usec);]]
+    sleep = function(ms) FFI.C.usleep(ms * 1000) end
+end
+
+sleep(1000)
 print("Thanks for using..")
-FFI.C.Sleep(1500)
+sleep(1500)
 print("T H E  C A L C U L A T O R .")
-FFI.C.Sleep(2000)
+sleep(2000)
 
 print("First number/operand:")
-local Operand1 = tonumber(io.read())
+local Operand1 = tonumber(io.read():gsub("%s+", ""))
 
 print("Second number/operand:")
-local Operand2 = tonumber(io.read())
+local Operand2 = tonumber(io.read():gsub("%s+", ""))
 
 print("Lastly, what operation do you wanna do? [+ - * / // ^ %]")
-local Operation = tostring(io.read())
+local Operation = tostring(io.read()):gsub("%s+", "")
 
 print("Result: " .. tostring(Operations[Operation](Operand1, Operand2)))

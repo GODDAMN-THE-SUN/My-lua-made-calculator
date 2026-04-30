@@ -17,10 +17,10 @@ print("T H E  C A L C U L A T O R .")
 sleep(2000)
 
 print("First number/operand:")
-local Operand1 = tonumber(io.read():gsub("%s+", ""))
+local Operand1 = tonumber(io.read())
 
 print("Second number/operand:")
-local Operand2 = tonumber(io.read():gsub("%s+", ""))
+local Operand2 = tonumber(io.read())
 
 print("Lastly, what operation do you wanna do? [+ - * / // ^ %]")
 local Operation = tostring(io.read()):gsub("%s+", "")
